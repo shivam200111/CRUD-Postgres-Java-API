@@ -1,4 +1,3 @@
-
 package learning.crud_postgres_java_api.repository;
 
 import learning.crud_postgres_java_api.model.Employee;
@@ -6,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    // JpaRepository provides built-in methods like save, findById, findAll, deleteById, etc.
 }
-

@@ -2,10 +2,13 @@ package learning.crud_postgres_java_api.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Employee3")  // Updated to match the new table name "Employee3"
+@Table(name = "Employee3")  // Matches the table name "Employee3"
 public class Employee {
 
     @Id
@@ -14,7 +17,7 @@ public class Employee {
 
     @NotNull
     @Column(name = "keycloak_user_id", unique = true)
-    private String keycloakUserId;  // New field for Keycloak user ID
+    private String keycloakUserId;
 
     @NotNull
     private String name;
@@ -28,13 +31,13 @@ public class Employee {
     @NotNull
     private String password;
 
+    @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    private Timestamp createdAt;  // New field for created timestamp
+    private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at")
-    private Timestamp updatedAt;  // New field for updated timestamp
-
-
+    private LocalDateTime updatedAt;
 
     // Getters and Setters
     public Long getId() {
@@ -80,23 +83,24 @@ public class Employee {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public Timestamp getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
